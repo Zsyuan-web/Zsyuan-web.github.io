@@ -77,6 +77,14 @@ content/                         ← 内容知识库
 - **CText API** — 中国哲学书电子化计划（道德经、庄子等）
 - 使用方式: `import { kb } from "@/lib/knowledge-base"`
 
+## 用户画像（基于真实搜索数据）
+参考 `content/persona-research.md`，三大核心用户群：
+- **焦虑解谜者** (28-40岁) — 搜索"how to stop worrying"，功能性需求
+- **哲学探索者** (22-35岁) — 搜索"Buddhism for beginners"，概念性需求
+- **修行实践者** (30-50岁) — 搜索"how to meditate correctly"，进阶需求
+
+TOP 10 高频问题已定位（无我+轮回矛盾居首），内容策略优先覆盖长尾关键词。
+
 ## 内容工作流
 ```
 你（灵感） → 我（查知识库 + 逻辑推演） → 补充成文 → 入库
