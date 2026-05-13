@@ -1,0 +1,100 @@
+{
+  "site": {
+    "title": "炁若 — 佛道思想智慧",
+    "description": "探索佛教与道教的深邃智慧，加入社区讨论，培育属于你的灵性之宠。"
+  },
+  "nav": {
+    "home": "首页",
+    "wisdom": "智慧",
+    "community": "社区",
+    "pet": "灵宠",
+    "login": "登录",
+    "register": "注册",
+    "profile": "个人中心",
+    "settings": "设置",
+    "logout": "退出登录"
+  },
+  "home": {
+    "hero": {
+      "title": "佛道思想 · 智慧社区 · 灵性之宠",
+      "subtitle": "探索佛教与道教的深邃智慧，在社区中交流心得，培育属于你的灵性宠物，一同成长。",
+      "start": "开始探索",
+      "join": "加入社区"
+    },
+    "features": {
+      "wisdom": {
+        "title": "佛道智慧",
+        "desc": "深入浅出地介绍佛教与道教的核心思想、经典解读、修行方法，以及两家思想的交融与对话。"
+      },
+      "community": {
+        "title": "社区论坛",
+        "desc": "与志同道合者交流心得、提问解惑、分享感悟。注册后即可参与讨论。"
+      },
+      "pet": {
+        "title": "灵宠养成",
+        "desc": "培育属于你的灵性宠物，通过互动喂养、修行训练提升等级，见证它的成长与进化。"
+      }
+    },
+    "footer": "炁若 · pneumasofia — 精神智慧 · 灵性之旅"
+  },
+  "wisdom": {
+    "title": "佛道智慧",
+    "subtitle": "探索佛教与道教的思想精髓",
+    "categories": {
+      "buddhism": "佛教",
+      "taoism": "道教",
+      "dialogue": "佛道对话",
+      "all": "全部"
+    },
+    "readMore": "阅读更多",
+    "empty": "暂无内容"
+  },
+  "community": {
+    "title": "社区论坛",
+    "subtitle": "与志同道合者交流探讨",
+    "newPost": "发布帖子",
+    "reply": "回复",
+    "loginHint": "登录后即可参与讨论"
+  },
+  "auth": {
+    "login": {
+      "title": "登录",
+      "email": "邮箱",
+      "password": "密码",
+      "submit": "登录",
+      "noAccount": "没有账号？",
+      "registerLink": "注册"
+    },
+    "register": {
+      "title": "注册",
+      "name": "昵称",
+      "email": "邮箱",
+      "password": "密码",
+      "confirmPassword": "确认密码",
+      "submit": "注册",
+      "hasAccount": "已有账号？",
+      "loginLink": "登录"
+    },
+    "error": {
+      "invalidCredentials": "邮箱或密码错误",
+      "emailRequired": "请填写邮箱",
+      "passwordRequired": "请填写密码",
+      "passwordMismatch": "两次密码不一致"
+    }
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "出错了",
+    "retry": "重试",
+    "save": "保存",
+    "cancel": "取消",
+    "confirm": "确认",
+    "delete": "删除",
+    "edit": "编辑",
+    "search": "搜索",
+    "back": "返回",
+    "language": "语言",
+    "darkMode": "深色模式",
+    "lightMode": "浅色模式"
+  }
+}

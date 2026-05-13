@@ -1,0 +1,100 @@
+{
+  "site": {
+    "title": "PneumaSofia — Wisdom of Buddhism & Taoism",
+    "description": "Explore the profound wisdom of Buddhism and Taoism, join community discussions, and nurture your spiritual companion."
+  },
+  "nav": {
+    "home": "Home",
+    "wisdom": "Wisdom",
+    "community": "Community",
+    "pet": "Spirit Pet",
+    "login": "Sign In",
+    "register": "Sign Up",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Sign Out"
+  },
+  "home": {
+    "hero": {
+      "title": "Buddhist & Taoist Wisdom · Community · Spirit Companion",
+      "subtitle": "Explore the profound wisdom of Buddhism and Taoism, share insights in the community, and nurture your spiritual companion to grow together.",
+      "start": "Begin Exploring",
+      "join": "Join Community"
+    },
+    "features": {
+      "wisdom": {
+        "title": "Buddhist & Taoist Wisdom",
+        "desc": "An accessible introduction to the core teachings of Buddhism and Taoism, including classic scripture interpretations, meditation practices, and their philosophical dialogue."
+      },
+      "community": {
+        "title": "Community Forum",
+        "desc": "Exchange insights, ask questions, and share reflections with like-minded seekers. Join the discussion after signing up."
+      },
+      "pet": {
+        "title": "Spirit Companion",
+        "desc": "Raise your own spiritual pet — interact, nurture, and train to elevate its level and witness its growth and evolution."
+      }
+    },
+    "footer": "PneumaSofia · pneumasofia — Spiritual Wisdom · Inner Journey"
+  },
+  "wisdom": {
+    "title": "Wisdom",
+    "subtitle": "Explore the essence of Buddhist and Taoist thought",
+    "categories": {
+      "buddhism": "Buddhism",
+      "taoism": "Taoism",
+      "dialogue": "Buddhist-Taoist Dialogue",
+      "all": "All"
+    },
+    "readMore": "Read More",
+    "empty": "No content yet"
+  },
+  "community": {
+    "title": "Community Forum",
+    "subtitle": "Discuss and share with fellow seekers",
+    "newPost": "New Post",
+    "reply": "Reply",
+    "loginHint": "Sign in to join the discussion"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign In",
+      "noAccount": "Don't have an account?",
+      "registerLink": "Sign Up"
+    },
+    "register": {
+      "title": "Sign Up",
+      "name": "Display Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "submit": "Sign Up",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Sign In"
+    },
+    "error": {
+      "invalidCredentials": "Invalid email or password",
+      "emailRequired": "Email is required",
+      "passwordRequired": "Password is required",
+      "passwordMismatch": "Passwords do not match"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "back": "Back",
+    "language": "Language",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode"
+  }
+}

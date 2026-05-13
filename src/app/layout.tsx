@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "炁若 — 佛道思想智慧",
-  description: "探索佛教与道教的深邃智慧，加入社区讨论，培育属于你的灵性之宠。",
+  title: "PneumaSofia — Wisdom of Buddhism & Taoism",
+  description:
+    "Explore the profound wisdom of Buddhism and Taoism, join community discussions, and nurture your spiritual companion.",
 };
 
 export default function RootLayout({
@@ -24,8 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="zh-CN"
+      lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
