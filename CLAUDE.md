@@ -1,109 +1,116 @@
-# pneumasofia 工作区
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## 项目信息
-- 项目名: pneumasofia（精神智慧 / 灵性智慧）
-- 中文名: 炁若
-- 类型: 佛道思想智慧网站（内容 + 社区 + 灵宠养成）
-- **核心目标**: 通过高质量佛道内容获取 Google AdSense 广告收益
-- 默认语言: 英文，根据 IP/浏览器自动检测，支持手动切换
+- 项目: pneumasofia（炁若 / 精神智慧）— 佛道思想内容网站
+- 类型: 内容 + 社区 + 灵宠养成
+- **核心目标**: 高质量佛道英文内容驱动 SEO 流量，通过 Google AdSense 变现
+- 默认语言: 英文，支持中英文切换（`localePrefix: "as-needed"` → `/` 英文, `/zh` 中文）
 
 ## 技术栈
-- **框架**: Next.js 16.2 (App Router)
-- **语言**: TypeScript
-- **样式**: Tailwind CSS 4 + shadcn/ui
-- **数据库**: SQLite + Prisma 7
-- **认证**: NextAuth v4 (credentials provider)
-- **国际化**: next-intl v4 (中/英双语)
-- **内容**: react-markdown + remark-gfm
-- **广告**: Google AdSense（展示广告 + 内容内嵌广告 + 信息流广告）
-- **运行时**: Node.js 22
+- **框架**: Next.js 16.2 (App Router) + TypeScript
+- **样式**: Tailwind CSS 4 + shadcn/ui (Card, Button, Input, Dialog, Tabs, Badge 等)
+- **数据库**: SQLite + **Prisma 7**（必须使用 adapter 模式，不支持直接 datasourceUrl）
+- **认证**: NextAuth v4 (CredentialsProvider + JWT)
+- **国际化**: next-intl v4（中/英），检测链: Cookie → Accept-Language → 英文
+- **内容**: react-markdown + remark-gfm，Markdown + YAML frontmatter
+- **广告**: Google AdSense（通过 `NEXT_PUBLIC_ADSENSE_ID` 配置）
 
-## 项目结构
+## 关键命令
+- `npm run dev` — 开发服务器 (localhost:3000)
+- `npm run build` — 生产构建
+- `npx prisma studio` — 数据库管理
+- `npx prisma migrate dev` — 数据库迁移
+- `npx prisma generate` — 重新生成 Prisma client
+
+## 架构要点
+
+### 国际化路由
 ```
-src/
-├── app/
-│   ├── [locale]/                ← 国际化路由
-│   │   ├── layout.tsx           ← 本地化布局（导航栏、语言切换）
-│   │   └── page.tsx             ← 首页
-│   ├── api/auth/[...nextauth]/  ← 认证 API
-│   ├── globals.css              ← 全局样式
-│   └── layout.tsx               ← 根布局
-├── components/
-│   ├── adsense-script.tsx       ← AdSense 脚本加载
-│   ├── ad-display.tsx           ← 广告单元组件
-│   ├── language-switcher.tsx    ← 语言切换组件
-│   └── ui/                      ← shadcn/ui 组件
-├── lib/
-│   ├── auth.ts                  ← 认证配置
-│   ├── knowledge-base/          ← 外部知识库集成
-│   └── prisma.ts                ← 数据库客户端
-├── navigation.ts                ← next-intl 路由工具
-├── proxy.ts                     ← 国际化中间件
-├── generated/prisma/            ← Prisma 生成代码
-└── types/                       ← 类型定义
-i18n/
-├── request.ts                   ← next-intl 配置
-└── routing.ts                   ← 路由/语言配置
-messages/
-├── en.json                      ← 英译
-└── zh.json                      ← 中文源文件
-prisma/
-├── schema.prisma                ← 数据库模型
-└── dev.db                       ← SQLite 数据库文件
-content/                         ← 内容知识库
-├── zh/buddhism/                 ← 中文佛教内容系列
-├── zh/taoism/                   ← 中文道教内容系列
-├── plan.md                      ← 内容规划总纲
-└── workflow.md                  ← 内容工作流程
+i18n/routing.ts  → 定义 routing (locales: ["en","zh"], default: "en")
+i18n/request.ts  → next-intl 请求配置，加载 messages/{locale}.json
+src/proxy.ts     → 语言检测中间件（Cookie → Accept-Language → 英文）
+src/navigation.ts → 导出 <Link>, usePathname, useRouter (使用 createNavigation)
+src/app/[locale]/ → 所有页面在此路由下
 ```
 
-## 数据库模型
-- User / Account / Session — 用户认证
-- Article / Comment — 佛道思想内容 + 评论
-- ForumThread / ForumPost — 社区论坛
-- Pet / PetInteraction — 灵宠养成系统
+### Prisma 7 Adapter（注意！）
+```ts
+// src/lib/prisma.ts — Prisma 7 必须使用 adapter 模式
+import { PrismaLibSql } from "@prisma/adapter-libsql";
+const adapter = new PrismaLibSql({ url: "file:./prisma/dev.db" });
+const prisma = new PrismaClient({ adapter });
+// import from "../generated/prisma/client" (不是 @prisma/client)
+```
 
-## 广告策略
-- **广告来源**: Google AdSense（配置 `NEXT_PUBLIC_ADSENSE_ID`）
-- **广告位布局**:
-  - 文章列表页：信息流广告（每 5-6 篇插入一个广告位）
-  - 文章详情页：内容内嵌广告（正文中）+ 底部展示广告
-  - 社区页面：侧边栏/列表间展示广告
-- **用户体验**: 广告不遮挡内容，不干扰阅读，保持页面简洁
-- **SEO 优先**: 高质量原创内容 → 自然流量 → 广告曝光
+### 内容系统
+```
+content/zh/buddhism/   — 8 篇佛教内容
+content/zh/taoism/     — 2 篇道教内容
+content/zh/special/    — 4 篇画像驱动专题
+content/plan.md        — 26+3 篇规划总纲
+content/workflow.md    — 灵感→知识库→推演→成文 工作流
+content/persona-research.md — Google 用户画像研究
+```
 
-## 外部知识库
-- **CBETA API** — 佛典全文检索（大正藏、卍续藏等）
-- **CText API** — 中国哲学书电子化计划（道德经、庄子等）
-- 使用方式: `import { kb } from "@/lib/knowledge-base"`
+内容加载：`src/lib/content.ts` 提供 `getAllContent()`, `getContentByCategory()`, `getContentBySlug()`，基于 GrayMatter frontmatter 解析。
 
-## 用户画像（基于真实搜索数据）
-参考 `content/persona-research.md`，三大核心用户群：
-- **焦虑解谜者** (28-40岁) — 搜索"how to stop worrying"，功能性需求
-- **哲学探索者** (22-35岁) — 搜索"Buddhism for beginners"，概念性需求
-- **修行实践者** (30-50岁) — 搜索"how to meditate correctly"，进阶需求
+### 知识库集成
+```ts
+import { kb } from "@/lib/knowledge-base";
+// kb.search("关键词")  → 跨 CBETA + CText 搜索
+// kb.getClassic("ctp:dao-de-jing") → 获取经典全文
+// kb.references.buddhist / .taoist → 预置经典引用
+```
+- CBETA API: `https://cbdata.dila.edu.tw/stable/search` — 佛典全文检索（需 Referer 头）
+- CText API: `https://api.ctext.org/gettext` — 中国哲学经典
 
-TOP 10 高频问题已定位（无我+轮回矛盾居首），内容策略优先覆盖长尾关键词。
+### Google AdSense
+- `src/components/adsense-script.tsx` — 根布局中加载 adsbygoogle.js
+- `src/components/ad-display.tsx` — 可复用广告单元组件
+  - `<AdDisplay slot="xxx" format="display|in-article|multiplex" />`
+- 广告位策略: 列表页信息流 / 文章页内嵌 / 底部展示
+
+### WebStorm 设置
+- 文件 → 设置 → 搜索 "node_modules" → 将 node_modules 标记为排除目录
+- 代码提示会更准确，性能也会提升
+
+### 代码规范
+- 缩进：2 空格
+- 分号：可选
+- 引号：单引号 (JSX 属性用双引号)
+- 换行：LF
+- 文件结尾：保留换行符
+- 组件命名：PascalCase，文件名与组件名一致
+- 变量/函数：camelCase
+- 常量：UPPER_SNAKE_CASE
+
+### TypeScript 使用
+- 优先使用 interface 而非 type（除非需要联合类型/映射类型）
+- 使用 `as` 语法进行类型断言
+- 启用 strict 模式
+- 禁止使用 `any`，尽可能使用 `unknown`
+- 使用 `import type { ... }` 导入类型
+- 使用 Promise<void> 表示异步函数的返回类型
+- 使用 Record<string, unknown> 表示未知对象
+
+### 文件组织
+- 每个组件一个文件，组件名与文件名一致
+- 公共组件放在 src/components/ 下
+- 页面特定组件放在对应页面目录的 components/ 下
+- 使用 index.ts 文件重新导出，简化导入路径
+
+### 三方库使用原则
+- next-intl 的 Link/usePathname/useRouter 从 @/navigation 导入，不用 next/navigation
+- shadcn/ui 组件从 @/components/ui/* 导入，新组件通过 npx shadcn@latest add 安装
+- Prisma client 从 @/lib/prisma 导入（单例）
 
 ## 内容工作流
 ```
-你（灵感） → 我（查知识库 + 逻辑推演） → 补充成文 → 入库
+你（灵感） → 我（查 CBETA/CText 知识库） → 游戏攻略式推演 → 成文入库
 ```
-- 文章风格：游戏攻略式（关卡拆解 → 底层逻辑 → Boss 战 → 成就奖励）
-- 当前进度：**10/26 篇**（佛教 8 篇、道教 2 篇、对话 0 篇、概念 0 篇）
-- 源文件：`content/zh/`（中文），英译同步生成到 `content/en/`
-
-## 国际化
-- **默认语言**: 英文（海外流量为主 → 广告收益更高）
-- **检测顺序**: Cookie → Accept-Language 头 → IP 地理定位（预留）→ 英文
-- **翻译源**: `messages/zh.json` 为中文源文件
-- **URL 结构**: `/` 英文, `/zh` 中文（`localePrefix: "as-needed"`）
-
-## 命令
-- `npm run dev` — 启动开发服务器
-- `npm run build` — 构建
-- `npx prisma studio` — 数据库管理界面
-- `npx prisma migrate dev` — 数据库迁移
-
-## 权限
-全局 settings.json 已配置 Bash(*) 白名单，项目内所有操作自动放行。
+- 文章结构：概念拆解 → 底层逻辑 → 进阶心法 → 常见误解 → 收获
+- 用户画像驱动：3 类核心用户（焦虑解谜者 / 哲学探索者 / 修行实践者）
+- 所有引用标注 CBETA/CText 编号，保持可回溯验证性
+- 当前内容: 14 篇（佛教 8 + 道教 2 + 专题 4）
