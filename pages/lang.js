@@ -1,27 +1,24 @@
 // Bilingual toggle
 (function(){
-  var current = localStorage.getItem('pns-lang') || 'zh';
+  let current;
+  try { current = localStorage.getItem('pns-lang') || 'zh'; }
+  catch { current = 'zh'; }
+
   function setLang(lang) {
     current = lang;
-    localStorage.setItem('pns-lang', lang);
-    // Skip <html> — only toggle content elements
+    try { localStorage.setItem('pns-lang', lang); } catch { /* non-persistent OK */ }
     document.querySelectorAll('[lang]:not(html)').forEach(function(el) {
       el.classList.toggle('active', el.getAttribute('lang') === lang);
     });
-    // Update toggle button labels
     document.querySelectorAll('.lang-switch').forEach(function(btn) {
       btn.textContent = lang === 'zh' ? 'EN' : '中';
+      btn.setAttribute('aria-label', lang === 'zh' ? 'Switch to English' : '切换到中文');
     });
-    // Update HTML lang attribute
     document.documentElement.lang = lang;
-    if (lang === 'en') {
-      document.documentElement.classList.add('en-mode');
-      document.documentElement.classList.remove('zh-mode');
-    } else {
-      document.documentElement.classList.add('zh-mode');
-      document.documentElement.classList.remove('en-mode');
-    }
+    document.documentElement.classList.toggle('en-mode', lang === 'en');
+    document.documentElement.classList.toggle('zh-mode', lang !== 'en');
   }
+
   document.addEventListener('DOMContentLoaded', function() {
     setLang(current);
     document.querySelectorAll('.lang-switch').forEach(function(btn) {
