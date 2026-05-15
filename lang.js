@@ -1,5 +1,5 @@
 // GA4 Measurement ID — 替换为你的实际 ID
-var GA_MEASUREMENT_ID = 'G-XXXXXXXX';
+var GA_MEASUREMENT_ID = 'G-SH9HZC7NKX';
 
 // Google Analytics 4
 (function(){
