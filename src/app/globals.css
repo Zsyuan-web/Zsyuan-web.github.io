@@ -14,6 +14,12 @@
   --color-accent-light: #d4a574;
   --color-accent-dark: #6b4530;
 
+  /* shadcn/ui required tokens */
+  --color-primary: var(--accent);
+  --color-primary-foreground: #fff;
+  --color-secondary: var(--quote-bg);
+  --color-secondary-foreground: var(--accent);
+
   /* Tailwind semantic color tokens → existing CSS variables */
   --color-background: var(--bg);
   --color-foreground: var(--text);
@@ -91,24 +97,7 @@
     outline-offset: 2px;
   }
 
-  /* Skip link */
-  .skip-link {
-    position: absolute;
-    top: -40px;
-    left: 16px;
-    background: var(--accent);
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 0 0 var(--radius) var(--radius);
-    z-index: 100;
-    font-size: 0.9rem;
-    text-decoration: none;
-  }
-  .skip-link:focus-visible {
-    top: 0;
-  }
-
-    /* Nav link hover */
+  /* Nav link hover */
   .nav-link:hover {
     color: var(--accent) !important;
     background: var(--hover-bg);
@@ -202,25 +191,43 @@
 
 /* Article content overrides for react-markdown */
 .article-content h2 {
-  font-size: 1.55rem;
-  margin: 48px 0 16px;
-  padding-top: 24px;
+  font-size: 1.4rem;
+  margin: 56px 0 16px;
+  padding-top: 32px;
   border-top: 1px solid var(--border);
   color: var(--text);
   font-family: var(--font-serif);
+  font-weight: 700;
 }
+
 .article-content h3 {
   font-size: 1.2rem;
-  margin: 32px 0 10px;
+  margin: 44px 0 14px;
   color: var(--text);
+  font-weight: 700;
 }
+
 .article-content h4 {
   font-size: 1.05rem;
   margin: 24px 0 8px;
   color: var(--accent);
 }
 .article-content p {
-  margin: 0 0 14px;
+  margin: 0 0 20px;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+/* Drop cap on first paragraph after a heading */
+.article-content h2 + p::first-letter,
+.article-content h3 + p::first-letter {
+  float: left;
+  font-size: 3.5rem;
+  line-height: 0.8;
+  padding-right: 8px;
+  padding-top: 4px;
+  color: var(--accent);
+  font-weight: 700;
 }
 .article-content strong {
   font-weight: 700;
@@ -233,16 +240,26 @@
 }
 .article-content blockquote {
   border-left: 3px solid var(--accent-light);
-  padding: 14px 20px;
-  margin: 20px 0;
-  background: var(--quote-bg);
-  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 0 0 0 20px;
+  margin: 28px 0;
   font-style: italic;
   color: var(--quote-text);
+  background: none;
+  border-radius: 0;
+  font-size: 15px;
+  line-height: 1.8;
 }
+
 .article-content blockquote p:last-child {
   margin-bottom: 0;
 }
+
+.article-content mark {
+  background: var(--quote-bg);
+  padding: 2px 0;
+  color: inherit;
+}
+
 .article-content hr {
   border: none;
   border-top: 1px solid var(--border);
