@@ -64,7 +64,7 @@ export default async function ArticlePage({ params }: Props) {
             href="/wisdom"
             className="inline-block text-sm text-muted no-underline mb-5 hover:text-accent transition-colors"
           >
-            &larr; {t("back")}
+            {t("back")}
           </Link>
           <h1 className="text-3xl md:text-4xl font-bold font-serif text-foreground leading-snug mb-3">
             {article.meta.title}
@@ -72,7 +72,7 @@ export default async function ArticlePage({ params }: Props) {
           {article.meta.tags.length > 0 && (
             <div className="flex gap-2 justify-center flex-wrap">
               {article.meta.tags.map((tag) => (
-                <Badge key={tag} variant="secondary">
+                <Badge key={tag} variant="secondary" className="py-0.5 px-2.5 leading-normal">
                   {tag}
                 </Badge>
               ))}
