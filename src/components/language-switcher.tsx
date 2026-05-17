@@ -19,15 +19,14 @@ export function LanguageSwitcher({ locale: _locale }: { locale?: string }) {
   };
 
   return (
-    <div className="relative">
-      <button
-        onClick={() => switchLocale(locale === "zh" ? "en" : "zh")}
-        disabled={isPending}
-        className="flex items-center gap-1.5 text-sm hover:text-zinc-600 dark:hover:text-zinc-300 disabled:opacity-50"
-      >
-        <Globe className="w-4 h-4" />
-        <span>{locale === "zh" ? "EN" : "中"}</span>
-      </button>
-    </div>
+    <button
+      onClick={() => switchLocale(locale === "zh" ? "en" : "zh")}
+      disabled={isPending}
+      aria-label={locale === "zh" ? "Switch to English" : "切换到中文"}
+      className="flex items-center gap-1.5 text-sm text-muted hover:text-accent disabled:opacity-50 transition-colors ml-2"
+    >
+      <Globe className="size-4" aria-hidden="true" />
+      <span>{locale === "zh" ? "EN" : "中"}</span>
+    </button>
   );
 }
