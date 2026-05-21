@@ -1,0 +1,266 @@
+{
+  "version": "1.0",
+  "framework": {
+    "夺境": {
+      "order": 1,
+      "zh": "揭露无根性，拆掉读者的认知安全网",
+      "en": "Seizing Context — expose groundlessness, dismantle cognitive safety nets"
+    },
+    "用工具": {
+      "order": 2,
+      "zh": "佛教的分析刀 + 道教的体验指南针",
+      "en": "Using Tools — Buddhist scalpel + Taoist compass"
+    },
+    "空空": {
+      "order": 3,
+      "zh": "连工具也放下，意义的追问本身瓦解",
+      "en": "Double Emptiness — even the tools are released, the question-structure collapses"
+    }
+  },
+  "thinkers": [
+    {
+      "id": "nietzsche",
+      "nameZh": "尼采",
+      "era": "1844–1900",
+      "keyWorks": ["《权力意志》", "《查拉图斯特拉如是说》"],
+      "coreZh": "虚无主义是最高价值的自行贬黜。上帝死了，传统地基坍塌。",
+      "relationToBuddhism": "把佛教称为'唯一真正实证的宗教'，但误解空性（śūnyatā）为单纯的否定",
+      "mappedBuddhist": "空性（诸法无自性）",
+      "mappedTaoist": "道可道，非常道"
+    },
+    {
+      "id": "camus",
+      "nameZh": "加缪",
+      "era": "1913–1960",
+      "keyWorks": ["《西西弗斯神话》", "《局外人》"],
+      "coreZh": "荒谬是人对意义的渴望与宇宙沉默之间的对峙。不必自杀，要反抗。",
+      "relationToBuddhism": "'反抗'平行于菩萨道——看清空却选择投入，但他从未超越英雄式的自我",
+      "mappedBuddhist": "苦（duḥkha）——无常即苦",
+      "mappedTaoist": "天地不仁，以万物为刍狗"
+    },
+    {
+      "id": "heidegger",
+      "nameZh": "海德格尔",
+      "era": "1889–1976",
+      "keyWorks": ["《存在与时间》", "《形而上学是什么》"],
+      "coreZh": "存在不是存在者。从存在者视角看，存在表现为无。",
+      "relationToBuddhism": "曾翻译《道德经》，'无无化'平行于佛家的'空性即活动'",
+      "mappedBuddhist": "无明（avidyā）——对实相的根本无知",
+      "mappedTaoist": "为学日益，为道日损"
+    },
+    {
+      "id": "nishitani",
+      "nameZh": "西谷启治",
+      "era": "1900–1990",
+      "keyWorks": ["《虚无主义的自我克服》", "《宗教是什么》"],
+      "coreZh": "虚无主义不能绕过去——唯一的出路是穿过去。大疑→大死→空的场域。",
+      "relationToBuddhism": "用大乘空性（śūnyatā）直接回答尼采的虚无主义问题",
+      "mappedBuddhist": "空空——空连自己也空掉",
+      "mappedTaoist": "无无——否定之否定"
+    }
+  ],
+  "nihilismForms": [
+    {
+      "id": "existential",
+      "nameZh": "存在虚无主义",
+      "questionZh": "如果生命没有内在意义，为什么还要活着？",
+      "symptomZh": "一切都没有意义——成功空虚、关系短暂、死亡让一切归零",
+      "buddhistResponse": "同意本来无我。苦来自对无常的抓取。意义不是固定所有物，而是缘起活动。",
+      "taoistResponse": "意义不是找到的。水不是为了到海才流动——它就是流。道法自然。"
+    },
+    {
+      "id": "epistemological",
+      "nameZh": "认知虚无主义",
+      "questionZh": "我们能确定地知道任何事吗？",
+      "symptomZh": "每一个信仰体系都建立在无法证明的假设之上",
+      "buddhistResponse": "中观：没有绝对正确的观点，但也不拒绝所有观点。观点是工具不是所有物。",
+      "taoistResponse": "道可道非常道。不需要确定性也能好好活——你不需要定义水才能游泳。"
+    },
+    {
+      "id": "ethical",
+      "nameZh": "道德虚无主义",
+      "questionZh": "如果没有客观的道德，为什么要做好人？",
+      "symptomZh": "善恶是社会建构，不是真实存在的",
+      "buddhistResponse": "善不等于服从规则——恶会造成自己和别人的痛苦。因果（业）不是审判，是因果关系。",
+      "taoistResponse": "上德不德是以有德。最高的德不自称德。自然慈悲是顺道而行，不是遵守规则。"
+    }
+  ],
+  "concepts": [
+    {
+      "id": "sunyata",
+      "termZh": "空",
+      "termEn": "śūnyatā",
+      "type": "buddhist",
+      "definition": "一切事物没有独立、固定的本质——每样东西都是因缘和合。不是虚无，是没有自性。",
+      "source": "《中论》卷第一：诸法不自生，亦不从他生，不共不无因，是故知无生",
+      "related": ["anitya", "anatman", "double-emptiness"]
+    },
+    {
+      "id": "double-emptiness",
+      "termZh": "空空",
+      "termEn": "śūnyatāśūnyatā",
+      "type": "buddhist",
+      "definition": "连空本身也空掉。不把空当成真理来抓，空的追问自然瓦解。",
+      "source": "《大般若波罗蜜多经》：空空者，谓空一切法空",
+      "related": ["sunyata", "great-freedom"]
+    },
+    {
+      "id": "anatman",
+      "termZh": "无我",
+      "termEn": "anātman",
+      "type": "buddhist",
+      "definition": "没有一个固定、独立的自我。五蕴（色受想行识）只是暂时的因缘集合。",
+      "source": "《杂阿含经》卷一：色无常，无常即苦，苦即非我",
+      "related": ["sunyata", "anitya"]
+    },
+    {
+      "id": "anitya",
+      "termZh": "无常",
+      "termEn": "anitya",
+      "type": "buddhist",
+      "definition": "一切有为法都在变化之中，没有永恒不变的事物。",
+      "source": "《杂阿含经》"
+    },
+    {
+      "id": "avidya",
+      "termZh": "无明",
+      "termEn": "avidyā",
+      "type": "buddhist",
+      "definition": "对实相的根本无知——不知道诸法无自性。十二因缘之首。",
+      "source": "《杂阿含经》卷十二：无明为缘行，行为缘识"
+    },
+    {
+      "id": "dukkha",
+      "termZh": "苦",
+      "termEn": "duḥkha",
+      "type": "buddhist",
+      "definition": "有条件的存在的根本不满足性。不是单纯的痛苦——是一切无常事物无法提供真正安顿的特性。",
+      "source": "《杂阿含经》"
+    },
+    {
+      "id": "dao",
+      "termZh": "道",
+      "termEn": "Dao/Tao",
+      "type": "taoist",
+      "definition": "让万物成为自己的本源。不能被定义（道可道非常道），因为语言需要边界而道没有边界。",
+      "source": "《道德经》第一章",
+      "related": ["wu-wei", "ziran", "wu"]
+    },
+    {
+      "id": "wu-wei",
+      "termZh": "无为",
+      "termEn": "wú-wéi",
+      "type": "taoist",
+      "definition": "不违背事物本性的行动。不是什么都不做——是找到事物的纹理，顺着纹理走。",
+      "source": "《道德经》第四十三章：天下之至柔，驰骋天下之至坚",
+      "related": ["dao", "ziran"]
+    },
+    {
+      "id": "ziran",
+      "termZh": "自然",
+      "termEn": "zìrán",
+      "type": "taoist",
+      "definition": "自己本来的样子。道法自然——道效法的不是更高的东西，它只是自己本来的样子。",
+      "source": "《道德经》第二十五章：人法地，地法天，天法道，道法自然",
+      "related": ["dao", "wu-wei"]
+    },
+    {
+      "id": "wu",
+      "termZh": "无",
+      "termEn": "wú (non-being)",
+      "type": "taoist",
+      "definition": "不是空无一物的空洞——是万物得以呈现的背景。不同于佛教的空（śūnyatā）——无是体验，空是诊断。",
+      "source": "《道德经》第十一章：有之以为利，无之以为用",
+      "related": ["dao", "sunyata"]
+    },
+    {
+      "id": "great-freedom",
+      "termZh": "大自在",
+      "termEn": "mahāvaśavartin",
+      "type": "buddhist",
+      "definition": "不是拿到万能钥匙，而是发现门根本不需要锁。不是没有问题，而是问题这个结构瓦解了。",
+      "related": ["double-emptiness", "sunyata"]
+    },
+    {
+      "id": "second-arrow",
+      "termZh": "第二支箭",
+      "termEn": "second arrow",
+      "type": "buddhist",
+      "definition": "第一支箭是事件本身的痛（不可避免），第二支箭是自己射给自己的叙事反应（可以避免）。",
+      "source": "《杂阿含经》卷十七：于苦受中，更生忧悲，妄生烦恼，如被箭射，更增第二箭",
+      "related": ["avidya", "anatman"]
+    },
+    {
+      "id": "empty-boat",
+      "termZh": "虚舟",
+      "termEn": "empty boat",
+      "type": "taoist",
+      "definition": "庄子寓言：你的船被另一艘船撞了——你发怒——发现对方是空的，没人驾驶——怒火瞬间消失。含怒需要一个'故意'的对象。",
+      "source": "《庄子·山木》：方舟而济于河，有虚船来触舟，虽有惼心之人不怒",
+      "related": ["wu-wei", "dao"]
+    },
+    {
+      "id": "butcher-ding",
+      "termZh": "庖丁解牛",
+      "termEn": "Butcher Ding",
+      "type": "taoist",
+      "definition": "庖丁的刀用十几年不钝——不是切牛，是找到骨头间的缝隙走刀。无为到空空的全过程：先找间隙，后间隙找你，最后找你的人化在间隙里。",
+      "source": "《庄子·养生主》：以神遇而不以目视，官知止而神欲行",
+      "related": ["wu-wei", "double-emptiness"]
+    },
+    {
+      "id": "dependent-origination",
+      "termZh": "缘起",
+      "termEn": "pratītyasamutpāda",
+      "type": "buddhist",
+      "definition": "一切事物因缘和合而生，条件变则事物变。没有独立存在的实体。",
+      "related": ["sunyata", "anitya"]
+    }
+  ],
+  "mappings": [
+    {
+      "western": "上帝死了（尼采）",
+      "buddhist": "诸法无自性（空）",
+      "taoist": "道可道非常道",
+      "synthesis": "同一件事：形而上学基础坍塌。尼采经历为灾难，佛教经历为解脱。"
+    },
+    {
+      "western": "荒谬（加缪）",
+      "buddhist": "苦——有条件的存在的根本不满足性",
+      "taoist": "天地不仁以万物为刍狗",
+      "synthesis": "诊断相同。佛道的处方更古老也更完整。"
+    },
+    {
+      "western": "存在的遗忘（海德格尔）",
+      "buddhist": "无明——对实相的根本无知",
+      "taoist": "为学日益为道日损",
+      "synthesis": "结构相同的遗忘：迷失在存在者中而遗忘存在本身。"
+    },
+    {
+      "western": "穿过虚无克服虚无（西谷启治）",
+      "buddhist": "空空——空也空掉",
+      "taoist": "无无——否定之否定",
+      "synthesis": "对虚无主义的克服不绕过去，是穿过它。"
+    },
+    {
+      "western": "权力意志/超人（尼采）",
+      "buddhist": "菩提心——觉醒利益一切众生的意愿",
+      "taoist": "无为而无不为",
+      "synthesis": "两者都是在以自我为中心的意义坍塌后创造性的投入——但菩萨行不需要一个需要被肯定的自我。"
+    }
+  ],
+  "canonicalTexts": {
+    "buddhist": [
+      {"title": "心经", "urn": "T08n0251"},
+      {"title": "金刚经", "urn": "T08n0235"},
+      {"title": "六祖坛经", "urn": "T48n2008"},
+      {"title": "中论", "urn": "T30n1564"}
+    ],
+    "taoist": [
+      {"title": "道德经", "urn": "ctp:dao-de-jing"},
+      {"title": "庄子", "urn": "ctp:zhuangzi"},
+      {"title": "列子", "urn": "ctp:liezi"},
+      {"title": "抱朴子", "urn": "ctp:baopuzi"}
+    ]
+  }
+}

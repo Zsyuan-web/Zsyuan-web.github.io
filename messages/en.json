@@ -16,7 +16,7 @@
     "hero": {
       "titleAccent": "Ancient Wisdom,",
       "titleMain": "Modern Voice",
-      "subtitle": "Buddhist and Taoist philosophy — not as self-help, but as genuine philosophical inquiry. No easy answers, just better questions.",
+      "subtitle": "Buddhist and Taoist philosophy — guiding you through appearances to essence. No easy answers, just better questions.",
       "start": "Explore Articles"
     },
     "featured": "Featured Essays"
@@ -54,6 +54,11 @@
       "passwordRequired": "Password is required",
       "passwordMismatch": "Passwords do not match"
     }
+  },
+  "comingSoon": {
+    "forum": "Community discussions coming soon. Share your thoughts on Buddhist and Taoist philosophy with fellow readers.",
+    "login": "Sign in and registration coming soon. Join the community to save your reading progress and participate in discussions.",
+    "backLabel": "Browse Articles"
   },
   "common": {
     "loading": "Loading...",

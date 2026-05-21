@@ -1,13 +1,19 @@
 import fs from "fs";
 import path from "path";
+import matter from "gray-matter";
+
+const LOCALES = ["en", "zh"] as const;
 
 export interface ContentMeta {
   title: string;
+  subtitle?: string;
   slug: string;
   category: string;
   tags: string[];
   published: boolean;
   order: number;
+  continueReading?: string[];
+  description?: string;
 }
 
 export interface ContentItem {
@@ -17,43 +23,36 @@ export interface ContentItem {
 
 const contentDir = path.join(process.cwd(), "content");
 const localeDir = (locale: string) => path.join(contentDir, locale);
-const categories = ["buddhism", "taoism", "dialogue", "concepts"];
+const categories = ["buddhism", "taoism", "dialogue", "concepts", "special"];
 
 function parseFrontmatter(raw: string): { meta: ContentMeta; content: string } {
-  const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!match) {
-    throw new Error("Invalid frontmatter");
-  }
+  const { data, content } = matter(raw);
 
-  const fm: Record<string, unknown> = {};
-  const lines = match[1].split("\n");
-  for (const line of lines) {
-    const sep = line.indexOf(":");
-    if (sep === -1) continue;
-    const key = line.slice(0, sep).trim();
-    let val: unknown = line.slice(sep + 1).trim();
-
-    if (val === "true") val = true;
-    else if (val === "false") val = false;
-    else if (/^\d+$/.test(val as string)) val = parseInt(val as string, 10);
-
-    fm[key] = val;
-  }
+  const tags = Array.isArray(data.tags)
+    ? data.tags.map(String)
+    : typeof data.tags === "string"
+      ? (data.tags as string).split(",").map((t) => t.trim()).filter(Boolean)
+      : [];
 
   return {
     meta: {
-      title: (fm.title as string) || "",
-      slug: (fm.slug as string) || "",
-      category: (fm.category as string) || "",
-      tags: (fm.tags as string[]) || [],
-      published: (fm.published as boolean) || false,
-      order: (fm.order as number) || 0,
+      title: String(data.title ?? ""),
+      subtitle: data.subtitle ? String(data.subtitle) : undefined,
+      slug: String(data.slug ?? ""),
+      category: String(data.category ?? ""),
+      tags,
+      published: Boolean(data.published),
+      order: Number(data.order) || 0,
+      continueReading: Array.isArray(data.continueReading)
+        ? data.continueReading.map(String)
+        : undefined,
+      description: data.description ? String(data.description) : undefined,
     },
-    content: match[2].trim(),
+    content: content.trim(),
   };
 }
 
-export function getAllContent(locale: string = "zh"): ContentItem[] {
+export function getAllContent(locale: string = "en"): ContentItem[] {
   const baseDir = localeDir(locale);
   const items: ContentItem[] = [];
 
@@ -78,12 +77,12 @@ export function getAllContent(locale: string = "zh"): ContentItem[] {
 
 export function getContentByCategory(
   category: string,
-  locale: string = "zh"
+  locale: string = "en"
 ): ContentItem[] {
   return getAllContent(locale).filter((item) => item.meta.category === category);
 }
 
-export function getContentBySlug(slug: string, locale: string = "zh"): ContentItem | null {
+export function getContentBySlug(slug: string, locale: string = "en"): ContentItem | null {
   const items = getAllContent(locale);
   return items.find((item) => item.meta.slug === slug) ?? null;
 }

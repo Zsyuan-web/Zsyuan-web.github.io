@@ -37,7 +37,7 @@ export function NavLinks({
           key={item.href}
           href={item.href}
           className={`
-            relative text-sm no-underline px-3 py-1.5 rounded-full transition-all duration-200
+            relative text-base no-underline px-3 py-1.5 rounded-full transition-all duration-200
             ${item.upcoming
               ? "text-muted/50 border border-dashed border-border hover:text-muted hover:bg-hover"
               : isActive(item.href, item.exact)

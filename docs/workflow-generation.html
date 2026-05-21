@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>网页内容写作完整流程 — PneumaSofia</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; font-size: 17px; line-height: 1.85; color: #1a1a1a; background: #fff; }
+    .container { max-width: 840px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+    h1 { font-size: 1.875rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.015em; }
+    .subtitle { font-size: 0.9375rem; color: #666; margin-bottom: 1rem; }
+    .lead { font-size: 0.9375rem; color: #555; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid #e5e5e5; }
+    h2 { font-size: 1.25rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #111; }
+    h3 { font-size: 1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    p { margin-bottom: 0.875rem; }
+    ul, ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    strong { font-weight: 600; }
+    code { font-family: "SF Mono", "Fira Code", Consolas, monospace; font-size: 0.8125rem; background: #f4f4f5; padding: 0.15em 0.4em; border-radius: 4px; color: #374151; }
+    pre { background: #1a1a2e; color: #e0e7ff; padding: 1.5rem; border-radius: 10px; overflow-x: auto; margin: 1.25rem 0; font-size: 0.8125rem; line-height: 1.7; }
+    pre code { background: none; padding: 0; color: inherit; }
+    .example-box { border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; }
+    .example-box.good { background: #f0fdf4; border: 1px solid #86efac; }
+    .example-box.bad { background: #fef9f9; border: 1px solid #fca5a5; }
+    .example-box .label { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.6rem; }
+    .example-box.good .label { color: #15803d; }
+    .example-box.bad .label { color: #dc2626; }
+    .example-box p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.9375rem; }
+    thead th { text-align: left; padding: 0.75rem 1rem; background: #f7f7f7; font-weight: 600; border-bottom: 2px solid #e0e0e0; }
+    tbody td { padding: 0.75rem 1rem; border-bottom: 1px solid #eee; vertical-align: top; }
+    tbody tr:last-child td { border-bottom: none; }
+    .flow-block { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); color: white; padding: 1.5rem 2rem; border-radius: 10px; margin: 1.5rem 0; }
+    .flow-block .step { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; margin-bottom: 0.25rem; }
+    .flow-block .title { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .flow-block .desc { font-size: 0.875rem; opacity: 0.85; line-height: 1.5; }
+    .arrow { text-align: center; font-size: 1.25rem; color: #2563eb; margin: 0.5rem 0; letter-spacing: 0.3em; }
+    .alert-box { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0; }
+    .alert-box strong { color: #b45309; }
+    .checklist { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 10px; padding: 1.25rem 1.5rem; margin: 1rem 0; }
+    .checklist-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.6rem; font-size: 0.9rem; }
+    .checklist-item:last-child { margin-bottom: 0; }
+    .checklist-item input[type="checkbox"] { width: 16px; height: 16px; margin-top: 3px; accent-color: #2563eb; flex-shrink: 0; }
+    .phase-box { background: linear-gradient(135deg, #064e3b 0%, #065f46 100%); color: white; padding: 1.5rem 2rem; border-radius: 10px; margin: 2rem 0; }
+    .phase-box .phase { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; margin-bottom: 0.3rem; }
+    .phase-box .title { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .phase-box .content { font-size: 0.9rem; line-height: 1.7; opacity: 0.95; }
+    .section-divider { text-align: center; margin: 3rem 0; color: #ccc; font-size: 1.25rem; letter-spacing: 0.6em; }
+    .footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #e5e5e5; font-size: 0.8125rem; color: #999; text-align: center; }
+    @media (max-width: 600px) { .container { padding: 2rem 1rem 4rem; } pre { font-size: 0.75rem; } }
+  </style>
+</head>
+<body>
+<div class="container">
+
+<h1>网页内容写作完整流程</h1>
+<p class="subtitle">PneumaSofia 内容生成标准流程 · 2026-05-18 更新</p>
+<p class="lead">本文档涵盖从选题规划到最终发布的完整流程，核心原则：知识图谱驱动引文、引文驱动结构、逻辑推导引导读者自悟。</p>
+
+<!-- ==================== 流程总览 ==================== -->
+<h2>流程总览</h2>
+
+<pre style="background:#1a1a2e;color:#e0e7ff;padding:1.5rem;border-radius:10px;overflow-x:auto;margin:1rem 0;font-size:0.8125rem;line-height:1.7;">
+┌─────────────────────────────────────────────────────────┐
+│ 第0步：读规范文件                                        │
+│   docs/content-requirements.md + knowledge-graph.json     │
+└──────────────────────────────┬────────────────────────────┘
+                               ↓
+┌─────────────────────────────────────────────────────────┐
+│ 第1步：选题与规划                                        │
+│   知识图谱概念锁定 → 缺口检测 → 引用路径设计              │
+│   （规划阶段完成引文布局，写作时不再临时找引用）          │
+└──────────────────────────────┬────────────────────────────┘
+                               ↓
+┌─────────────────────────────────────────────────────────┐
+│ 第2步：生成中文版                                        │
+│   场景开头 → 逻辑推导（引导至引文）→ 引文印证            │
+│   → 追问递进 → 下一处引文                               │
+│   （须经自检 + 人工审查后方可进入下一步）                │
+└──────────────────────────────┬────────────────────────────┘
+                               ↓
+┌─────────────────────────────────────────────────────────┐
+│ 第3步：英文版（基于中文版重写，非翻译）                  │
+│   嵌入西哲参照框架                                      │
+└──────────────────────────────┬────────────────────────────┘
+                               ↓
+┌─────────────────────────────────────────────────────────┐
+│ 第4步：发布                                              │
+└─────────────────────────────────────────────────────────┘
+</pre>
+
+<!-- ==================== 第0步 ==================== -->
+<div class="phase-box">
+<div class="phase">Step 0 — 每次写作前必读</div>
+<div class="title">读取规范文件 + 知识图谱</div>
+<div class="content">
+docs/content-requirements.md · 禁止清单、写作原则、引文规范、自检清单<br>
+knowledge-graph.json · 实体定义、source字段、related关系、mappings配对
+</div>
+</div>
+
+<h2>第0步：读取规范文件 + 知识图谱</h2>
+
+<p>每次写作前必须读取两份文件：</p>
+<ul>
+  <li><code>docs/content-requirements.md</code> — 写作规范最终依据</li>
+  <li><code>knowledge-graph.json</code> — 概念本体，所有引文必须来自知识图谱或经其扩展</li>
+</ul>
+
+<!-- ==================== 第1步：选题与规划 ==================== -->
+<div class="phase-box">
+<div class="phase">Step 1 — 写作前</div>
+<div class="title">选题与规划：锁定引用路径</div>
+<div class="content">
+核心概念 → 知识图谱实体 → source/典故 → 递进路径设计 → 逐项写入规划文档
+</div>
+</div>
+
+<h2>第1步：选题与规划</h2>
+
+<h3>1.1 主题选择方法</h3>
+
+<p>主题不是拍脑袋选的。主题必须来自以下三个维度的交叉验证：</p>
+
+<table>
+  <thead><tr><th>维度</th><th>来源</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td><strong>搜索趋势</strong></td><td>Google 搜索建议、相关搜索、"人也在问"</td><td>用户在搜什么？哪些问题有真实流量？</td></tr>
+    <tr><td><strong>知识图谱缺口</strong></td><td>knowledge-graph.json 实体 + content-inventory/gaps/</td><td>哪些核心概念还没有文章？哪些相关概念缺失？</td></tr>
+    <tr><td><strong>系统性关联</strong></td><td>三步骤框架 + existing articles</td><td>新文章与已有文章的关系是什么？看完所有文章是否形成整体理解？</td></tr>
+  </tbody>
+</table>
+
+<p>一个有效的主题必须同时满足：① 有搜索需求（有人在找）② 知识图谱有支撑（不是空编）③ 与已有文章形成互补（不是重复）。</p>
+
+<h4>选题验证流程</h4>
+
+<pre><code>① 搜索趋势调研
+   WebSearch: "[目标概念] people_also_ask"
+   WebSearch: "[目标概念] related_questions"
+   → 提取真实用户提问
+
+② 知识图谱匹配
+   → 提取该概念的 knowledge-graph.json 定义
+   → 确认有足够的引文支撑（source + related）
+
+③ 缺口检测
+   → 查阅 content-inventory/gaps/needed-articles.md
+   → 确认该主题未被覆盖或需要升级
+
+④ 交叉验证
+   → 新文章与已有文章的引用不冲突
+   → 新文章与已有文章形成递进或呼应
+   → 读者看完所有文章后能形成对知识图谱的整体理解</code></pre>
+
+<p>选题确认后再进入 1.2 锁定知识图谱实体。</p>
+
+<h3>1.2 锁定知识图谱实体</h3>
+
+<p>确认文章主题对应的 knowledge-graph.json 实体：</p>
+
+<table>
+  <thead><tr><th>文章主题</th><th>对应实体</th><th>source 字段</th><th>related 实体</th></tr></thead>
+  <tbody>
+    <tr><td>空</td><td>sunyata</td><td>《中论》诸法不自生</td><td>anitya, anatman, double-emptiness</td></tr>
+    <tr><td>道</td><td>dao</td><td>《道德经》道可道</td><td>wu-wei, ziran, wu</td></tr>
+    <tr><td>无我</td><td>anatman</td><td>《杂阿含经》色无常</td><td>sunyata, anitya</td></tr>
+    <tr><td>无为</td><td>wu-wei</td><td>《道德经》天下之至柔</td><td>dao, ziran, butcher-ding, empty-boat</td></tr>
+  </tbody>
+</table>
+
+<h4>实体未找到时的扩展流程</h4>
+
+<p>若在 knowledge-graph.json 中未找到对应实体，按以下流程扩展：</p>
+
+<pre><code>① 在 knowledge-base/ 中搜索相关经典文本（CBETA/CText）
+   → 找到相关段落后，确定核心概念
+② 为该概念创建新实体，填写以下字段：
+   - id: 拼音无横线版本（如 xin-kong → xinkong）
+   - termZh / termEn: 中英文名称
+   - type: buddhist 或 taoist
+   - definition: 概念定义
+   - source: 扩展后的经典出处（多条）
+   - related: 关联概念（可从 knowledge-graph.json 现有实体中匹配）
+③ 更新 knowledge-graph.json：
+   - 将新实体追加至 concepts 数组
+   - 若与其他概念形成新映射，追加至 mappings
+④ 扩展后的 source 字段示例：
+   原始：《中论》诸法不自生
+   扩展后：《中论》卷第一·诸法不自生，亦不从他生
+              《杂阿含经》卷十二·缘起法
+              《心经》·因缘生</code></pre>
+
+<h4>扩展后实体示例</h4>
+
+<table>
+  <thead><tr><th>情况</th><th>操作</th><th>结果</th></tr></thead>
+  <tbody>
+    <tr><td><strong>有实体但 source 不足</strong></td><td>从 CBETA/CText 扩展引文至 source 字段</td><td>source 字段包含 2-4 条经典引文</td></tr>
+    <tr><td><strong>知识图谱中无该实体</strong></td><td>创建新实体 + 扩展 source</td><td>新实体写入 knowledge-graph.json</td></tr>
+    <tr><td><strong>概念属于西哲桥接范畴</strong></td><td>检查 mappings，若有新映射则追加</td><td>mappings 包含新映射关系</td></tr>
+  </tbody>
+</table>
+
+<p><strong>重要：</strong>扩展实体后，必须同步更新 knowledge-graph.json，确保后续写作时能找到该实体及其 source。</p>
+
+<h3>1.3 扩展引用来源</h3>
+
+<p>若 source 字段引用数量不足，从经典知识库扩展：</p>
+
+<table>
+  <thead><tr><th>主题</th><th>知识图谱source</th><th>可扩展引用</th><th>来源</th></tr></thead>
+  <tbody>
+    <tr><td>空</td><td>《中论》</td><td>《杂阿含经》缘起 · 《心经》因缘生 · 《金刚经》梦幻泡影</td><td>CBETA/CText</td></tr>
+    <tr><td>道</td><td>《道德经》</td><td>《庄子》筌者得鱼 · 《庄子》无用之用 · 《道德经》为道日损</td><td>CText</td></tr>
+    <tr><td>无我</td><td>《杂阿含经》</td><td>第二支箭 · 《金刚经》凡所有相</td><td>CBETA/CText</td></tr>
+    <tr><td>无为</td><td>《道德经》</td><td>《庄子》虚舟 · 《庄子》庖丁解牛 · 道法自然</td><td>CText</td></tr>
+  </tbody>
+</table>
+
+<h3>1.4 封装：网页内容写作技能</h3>
+
+<p><strong>技能名称：</strong>pneumasofia-writing</p>
+<p><strong>输入：</strong>knowledge-graph.json 实体（含 id、termZh、termEn、source、related）</p>
+<p><strong>输出：</strong>完整的中文文章初稿</p>
+
+<p>该技能封装以下流程：</p>
+
+<table>
+  <thead><tr><th>原章节</th><th>技能内处理内容</th></tr></thead>
+  <tbody>
+    <tr><td>1.4 设计引用递进路径</td><td>根据 related 设计递进链（印证→深化→升维→收尾）</td></tr>
+    <tr><td>1.5 确认写作原则</td><td>场景开头·逻辑链完整·无跳步推导·自然结尾</td></tr>
+    <tr><td>2.1-2.2 写作顺序与核心原则</td><td>引文驱动逻辑：先锁引文路径→为每处引文设计推导</td></tr>
+    <tr><td>2.3 禁止事项</td><td>禁止临时新增引文·禁止跳步推导</td></tr>
+    <tr><td>2.4 引文格式</td><td>blockquote 样式·原文直接引出不加引号</td></tr>
+    <tr><td>2.5 修改内容</td><td>检测并修复AI腔·跳步推导·格式错误·人称·结尾答案感</td></tr>
+  </tbody>
+</table>
+
+<p><strong>使用阶段：</strong></p>
+
+<table>
+  <thead><tr><th>阶段</th><th>输入</th><th>输出</th></tr></thead>
+  <tbody>
+    <tr><td>生成阶段（Step 2）</td><td>knowledge-graph.json 实体 + citationPaths</td><td>完整文章初稿</td></tr>
+    <tr><td>修改阶段（2.5）</td><td>当前文章草稿</td><td>修改后的文章（去除AI腔、修复格式错误等）</td></tr>
+  </tbody>
+</table>
+
+<p>技能内部流程：</p>
+
+<table>
+  <thead><tr><th>阶段</th><th>流程</th></tr></thead>
+  <tbody>
+    <tr><td><strong>生成阶段</strong></td><td>① 根据 related 设计引用递进路径（印证/深化/升维/收尾）② 从具体场景切入，设计每处引文的逻辑推导 ③ 引文印证读者判断，不是告诉读者该怎么想 ④ 自然收尾，无答案感 ⑤ 输出引文格式正确（blockquote 样式）的文章</td></tr>
+    <tr><td><strong>修改阶段</strong></td><td>① 检测并修复说教语气 ② 检测并修复跳步推导 ③ 修复引文格式错误 ④ 调整人称自然度 ⑤ 修复结尾给出答案的问题</td></tr>
+  </tbody>
+</table>
+
+<h3>1.5 确认写作原则</h3>
+
+<p>规划阶段同时确认以下原则，不再写作时临时判断：</p>
+
+<ul>
+  <li>每篇开头必须是具体感官化场景，不模式化，不通用"凌晨三点"</li>
+  <li>人称根据语境灵活使用，不强制"你"或"我们"</li>
+  <li>写作顺序：先为每处引文设计完整逻辑推导，再开始写</li>
+  <li>每处引文都是逻辑链的终点，不是放在结尾的装饰</li>
+  <li>结尾自然生成，禁止给答案</li>
+</ul>
+
+<!-- ==================== 第2步：生成 ==================== -->
+<div class="phase-box">
+<div class="phase">Step 2 — 写作中</div>
+<div class="title">生成中文版</div>
+<div class="content">
+场景开头 → 逻辑推导 → 引导至引文边界 → 引文印证 → 追问递进 → 下一处引文
+</div>
+</div>
+
+<h2>第2步：生成中文版</h2>
+
+<p>本步骤通过调用 <strong>pneumasofia-writing</strong> 技能完成，详见 1.4 节技能说明。</p>
+
+<h3>2.1 写作顺序：引文驱动逻辑</h3>
+
+<p>每篇文章按以下顺序生成，引用在 Step 1 规划阶段已锁定：</p>
+
+<pre><code>① 针对第一处引文，设计一段完整的逻辑推导
+   从具体场景切入 → 逐步追问 → 引文边界
+② 引用原文 + 场景化翻译
+③ 追问递进，设计下一处引文的逻辑路径
+④ 重复①-③至引用用尽
+⑤ 自然收尾（不给答案）
+⑥ 调用 pneumasofia-writing 技能修改
+⑦ 提交人工审查</code></pre>
+
+<p>核心变化：写作顺序不是"先写内容再插引文"，而是"先锁定引文路径，再为每处引文设计推导"。每一处引文都对应一段完整的逻辑链，由浅入深，暗中引导读者自己得出引文中的思想。</p>
+
+<h3>2.2 引文驱动逻辑的核心原则</h3>
+
+<p>每处引文不是"放在结尾的装饰"，而是"整段推导的终点"。</p>
+
+<table>
+  <thead><tr><th>组成部分</th><th>写法</th><th>示例</th></tr></thead>
+  <tbody>
+    <tr><td><strong>场景入口</strong></td><td>具体、感官化，针对当前主题，不模式化</td><td>"浏览器关掉。又打开。手指自己动的。"（空的主题：寻找）</td></tr>
+    <tr><td><strong>逻辑递进</strong></td><td>每步追问，由浅入深，不跳步，不强行升华</td><td>"为什么会这样？因为……但这说明什么？"</td></tr>
+    <tr><td><strong>引文边界</strong></td><td>读者走到那里，自己得出判断，引文来印证</td><td>分析到"找到就死"，读者已有共鸣</td></tr>
+    <tr><td><strong>引用原文</strong></td><td>印证读者的判断，不是告诉读者该怎么想</td><td>《中论》印证"找到就死"</td></tr>
+  </tbody>
+</table>
+
+<p>禁止：分析段落写到一半就跳到引文。引文必须在整段逻辑链的终点。</p>
+
+<h3>2.3 禁止事项</h3>
+
+<p>详细禁止清单见 <code>docs/content-requirements.md</code> 第二节。本步骤新增操作层禁止：</p>
+
+<table>
+  <thead><tr><th>禁止</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td>临时新增引文</td><td>引用路径在 Step 1 锁定，写作时不允许临时添加，必须先改规划</td></tr>
+    <tr><td>跳步推导</td><td>"显然"、"其实"、"也就是说"代替不了真正的推导</td></tr>
+  </tbody>
+</table>
+
+<h3>2.4 引文格式</h3>
+
+<p>详细引文规范见 <code>docs/content-requirements.md</code> 第四节。格式摘要：</p>
+
+<pre><code>原文（段落中直接引出，不加引号）
+——《出处》
+
+翻译（场景化翻译）：口语化、3句以内</code></pre>
+
+<h3>2.5 使用写作技能修改内容</h3>
+
+<p>完成初稿后，调用 <strong>pneumasofia-writing</strong> 技能对当前写作内容进行修改（技能说明见 1.4 节）。</p>
+
+<p>技能将自动检测并修复：</p>
+<ul>
+  <li>说教语气（"你应该"、"需要"、"必须"）</li>
+  <li>跳步推导（"显然"、"其实"）</li>
+  <li>引文格式错误</li>
+  <li>人称不自然</li>
+  <li>结尾给出答案</li>
+</ul>
+
+<h3>2.6 人工审查</h3>
+
+<p>自检通过后提交人工审查。审查要点：</p>
+<ul>
+  <li>说教味（"你应该"类指示性语气）</li>
+  <li>目的性（引文前推着读者走）</li>
+  <li>引文布局是否均匀</li>
+  <li>逻辑链是否完整</li>
+</ul>
+<p>人工审查提出的通用性要求，同步更新至本流程文档和 docs/content-requirements.md。</p>
+
+<!-- ==================== 第3步：英文版 ==================== -->
+<div class="phase-box">
+<div class="phase">Step 3</div>
+<div class="title">英文版（重写，非翻译）</div>
+<div class="content">
+基于通过审查的中文版重写 · 嵌入西哲框架 · 引文来源一致
+</div>
+</div>
+
+<h2>第3步：英文版（重写，非翻译）</h2>
+
+<p>中文版通过审查后，以中文版为蓝本<strong>重写</strong>为英文版（不是逐字翻译）。英文版需要：</p>
+
+<ul>
+  <li>为西方读者熟悉的概念框架搭桥（Nietzsche/Camus/Nishitani/Heidegger）</li>
+  <li>引文优先使用 CBETA/CText 原文，可额外引用西方哲学原典</li>
+  <li>核心论证与中文版一致，表达方式适配西方读者</li>
+</ul>
+
+<h3>英文版自检</h3>
+
+<div class="checklist">
+  <div class="checklist-item"><input type="checkbox"><span>没有指示性语气（"you should", "you need to"）</span></div>
+  <div class="checklist-item"><input type="checkbox"><span>有西哲框架桥接</span></div>
+  <div class="checklist-item"><input type="checkbox"><span>引文分布均匀</span></div>
+  <div class="checklist-item"><input type="checkbox"><span>结尾停在开放问题或承认现实</span></div>
+  <div class="checklist-item"><input type="checkbox"><span>英文版与中文版核心论证一致</span></div>
+</div>
+
+<!-- ==================== 第4步：发布 ==================== -->
+<h2>第4步：发布</h2>
+
+<pre><code># 创建 content/[locale]/concepts/[slug].md
+# 更新 content-inventory/gaps/needed-articles.md
+# 更新 knowledge/concepts/[slug].md
+# 运行 npm run build 确认无错误</code></pre>
+
+<div class="section-divider">· · ·</div>
+
+<h2>规范文件调用速查</h2>
+
+<table>
+  <thead><tr><th>环节</th><th>调用文件</th><th>核心内容</th></tr></thead>
+  <tbody>
+    <tr><td>写作前</td><td>docs/content-requirements.md</td><td>禁止清单、写作原则、引文规范</td></tr>
+    <tr><td>规划阶段</td><td>knowledge-graph.json</td><td>实体定义、source字段、related关系</td></tr>
+    <tr><td>引文扩展</td><td>src/lib/knowledge-base/</td><td>CBETA cbeta.ts · CText ctext.ts</td></tr>
+    <tr><td>写作技能</td><td>.claude/skills/pneumasofia-writing/SKILL.md</td><td>人称规则、AI腔检测、引文规范</td></tr>
+    <tr><td>英文版</td><td>docs/content-requirements.md 第五节</td><td>西哲桥接框架、中英差异说明</td></tr>
+  </tbody>
+</table>
+
+<div class="footer">
+最后更新：2026-05-18<br>
+本文档为内容写作标准流程，核心变更：引用路径规划先于写作、引文驱动结构、逻辑推导引导自悟<br>
+规范文件：docs/content-requirements.md<br>
+写作技能：.claude/skills/pneumasofia-writing/SKILL.md
+</div>
+
+</div>
+</body>
+</html>

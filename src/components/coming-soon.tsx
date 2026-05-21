@@ -12,7 +12,7 @@ export function ComingSoon({
   title,
   description,
   backTo = "/wisdom",
-  backLabel = "Browse Articles",
+  backLabel,
 }: ComingSoonProps) {
   return (
     <main id="main-content" className="flex-1 flex items-center justify-center">

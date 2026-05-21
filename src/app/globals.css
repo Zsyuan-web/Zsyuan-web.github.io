@@ -88,7 +88,7 @@
     color: var(--text);
     font-family: var(--font-serif);
     line-height: 1.85;
-    font-size: 16px;
+    font-size: 18px;
   }
 
   /* Focus styles */
@@ -150,12 +150,15 @@
 
 /* Cross links at bottom of articles */
 .cross-links {
-  padding: 40px 0 0;
+  padding: 48px 0 0;
+  margin-top: 48px;
+  border-top: 2px solid var(--border);
 }
 .cross-links h2 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--muted);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  font-weight: 500;
 }
 .cross-links .cards {
   display: grid;
@@ -166,7 +169,7 @@
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 20px;
+  padding: 24px;
   text-decoration: none;
   transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
   display: block;
@@ -177,16 +180,17 @@
   box-shadow: 0 2px 12px rgba(0,0,0,0.04);
 }
 .cross-links .card h3 {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: var(--accent);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-family: var(--font-serif);
+  font-weight: 600;
 }
 .cross-links .card p {
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 1rem;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.65;
 }
 
 /* Article content overrides for react-markdown */
@@ -214,21 +218,10 @@
 }
 .article-content p {
   margin: 0 0 20px;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.85;
 }
 
-/* Drop cap on first paragraph after a heading */
-.article-content h2 + p::first-letter,
-.article-content h3 + p::first-letter {
-  float: left;
-  font-size: 3.5rem;
-  line-height: 0.8;
-  padding-right: 8px;
-  padding-top: 4px;
-  color: var(--accent);
-  font-weight: 700;
-}
 .article-content strong {
   font-weight: 700;
 }
@@ -239,19 +232,21 @@
   margin: 4px 0;
 }
 .article-content blockquote {
-  border-left: 3px solid var(--accent-light);
-  padding: 0 0 0 20px;
-  margin: 28px 0;
-  font-style: italic;
+  border-left: 4px solid var(--accent);
+  padding: 16px 0 16px 24px;
+  margin: 32px 0;
   color: var(--quote-text);
-  background: none;
-  border-radius: 0;
-  font-size: 15px;
-  line-height: 1.8;
+  background: var(--quote-bg);
+  border-radius: 0 8px 8px 0;
+  font-style: normal;
+  font-size: 17px;
+  line-height: 1.85;
 }
-
 .article-content blockquote p:last-child {
   margin-bottom: 0;
+}
+.article-content blockquote p + p {
+  margin-top: 12px;
 }
 
 .article-content mark {
@@ -311,7 +306,7 @@
 }
 
 @media (max-width: 600px) {
-  .article-content h2 { font-size: 1.3rem; }
+  .article-content h2 { font-size: 1.5rem; }
   .article-content table { font-size: 0.8rem; }
   .article-content th, .article-content td { padding: 8px 10px; }
 }

@@ -11,12 +11,9 @@ export async function SiteHeader() {
       <nav className="max-w-[1100px] mx-auto flex items-center justify-between h-14 px-6">
         <Link
           href="/"
-          className="text-base font-bold text-accent no-underline leading-none"
+          className="text-lg font-bold text-accent no-underline leading-none"
         >
-          炁若{" "}
-          <span className="font-normal text-xs text-muted">
-            pneumasofia
-          </span>
+          炁若 <span className="font-serif italic">PneumaSofia</span>
         </Link>
 
         <div className="flex items-center gap-1">

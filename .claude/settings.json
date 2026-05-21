@@ -2,6 +2,7 @@
   "permissions": {
     "allow": [
       "Bash(*)",
+      "PowerShell(*)",
       "Read(*)",
       "Write(*)",
       "Edit(*)",
@@ -14,5 +15,9 @@
       "Skill(*)",
       "mcp__*"
     ]
+  },
+  "enabledPlugins": {
+    "claude-mem@thedotmack": true,
+    "superpowers@superpowers-marketplace": true
   }
 }

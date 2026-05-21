@@ -1,16 +1,20 @@
 /**
  * 知识库统一入口
- * 整合 CBETA（佛教）+ CText（中国哲学）两大古籍数据库
+ * 整合：CBETA（佛教）+ CText（中国哲学）+ Nihilism（西方虚无主义 + 佛道对治框架）
  *
  * 使用方式：
  * ```
  * import { kb } from "@/lib/knowledge-base";
  * const results = await kb.search("缘起性空");
+ *
+ * import { nihilism } from "@/lib/knowledge-base";
+ * const thinker = nihilism.thinker("nietzsche");
  * ```
  */
 
-import { searchSutra, SUTRAS } from "./cbeta";
+import { searchSutra, SUTRAS, getToc } from "./cbeta";
 import { getText, searchTexts, CLASSICS } from "./ctext";
+import { nihilism } from "./nihilism";
 
 export interface KnowledgeResult {
   source: "cbeta" | "ctext";
@@ -18,6 +22,8 @@ export interface KnowledgeResult {
   content: string;
   reference: string;
 }
+
+export { nihilism } from "./nihilism";
 
 export const kb = {
   /**
@@ -40,7 +46,8 @@ export const kb = {
       });
     }
 
-    for (const r of ctextResults.slice(0, limit)) {
+    const ctextSlice = ctextResults.slice(0, limit);
+    for (const r of ctextSlice) {
       results.push({
         source: "ctext",
         title: r.title,
@@ -57,8 +64,7 @@ export const kb = {
    */
   async getClassic(urn: string, source: "cbeta" | "ctext" = "ctext") {
     if (source === "cbeta") {
-      const toc = await import("./cbeta").then((m) => m.getToc(urn));
-      return toc;
+      return getToc(urn);
     }
     return getText(urn);
   },

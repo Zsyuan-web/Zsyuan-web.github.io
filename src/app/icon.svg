@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="8" fill="#8b5e3c"/>
+  <!-- 气 character as geometric strokes -->
+  <!-- Top horizontal -->
+  <rect x="8" y="10" width="16" height="3" rx="1.5" fill="#faf9f6"/>
+  <!-- Middle horizontal with gap (the key feature of 气) -->
+  <rect x="10" y="15.5" width="5" height="3" rx="1.5" fill="#faf9f6"/>
+  <rect x="17" y="15.5" width="5" height="3" rx="1.5" fill="#faf9f6"/>
+  <!-- Bottom vertical strokes -->
+  <rect x="10" y="22" width="3" height="3" rx="1.5" fill="#faf9f6"/>
+  <rect x="19" y="22" width="3" height="3" rx="1.5" fill="#faf9f6"/>
+</svg>
